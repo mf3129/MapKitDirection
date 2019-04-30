@@ -11,13 +11,28 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
 
+    let locationManager = CLLocationManager()
     @IBOutlet var mapView: MKMapView!
+    @IBAction func showDirection(sender: UIButton) {
+        
+    }
+    
+    
+    
     
     var restaurant:Restaurant!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //Requesting User Authorization
+        locationManager.requestWhenInUseAuthorization()
+        let status = CLLocationManager.authorizationStatus()
+        
+        if status == CLAuthorizationStatus.authorizedWhenInUse {
+            mapView.showsUserLocation = true
+        }
+        
+        
         // Convert address to coordinate and annotate it on map
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(restaurant.location, completionHandler: { placemarks, error in
