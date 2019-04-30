@@ -99,7 +99,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
             let route = routeResponse.routes[0]
             self.mapView.add(route.polyline, level: MKOverlayLevel.aboveRoads)
+            
+            //Scaling the map automatically to route
+            let rect = route.polyline.boundingMapRect
+            self.mapView.setRegion(MKCoordinateRegionForMapRect(rect), animated: true)
         }
+        
     }
 
     //MARK: Visual for MKPolyline Route
