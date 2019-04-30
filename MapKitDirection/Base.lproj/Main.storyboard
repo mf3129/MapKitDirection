@@ -91,12 +91,26 @@
                                     <action selector="showDirectionWithSender:" destination="vIg-fp-xRT" eventType="touchUpInside" id="PHD-QX-RfL"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2gH-hC-EeA">
+                                <rect key="frame" x="236" y="619" width="119" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="iab-Fe-ETi"/>
+                                    <constraint firstAttribute="width" constant="119" id="keN-Wq-Yvs"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Car"/>
+                                    <segment title="Walking"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="htv-19-Sbi" firstAttribute="trailing" secondItem="2gH-hC-EeA" secondAttribute="trailing" constant="20" id="38m-bc-lFP"/>
+                            <constraint firstItem="2gH-hC-EeA" firstAttribute="leading" secondItem="htv-19-Sbi" secondAttribute="leading" constant="236" id="4KD-OE-Lfk"/>
                             <constraint firstItem="Tpj-yl-bg6" firstAttribute="top" secondItem="htv-19-Sbi" secondAttribute="top" id="7Jv-pw-zJL"/>
                             <constraint firstItem="jEj-5k-AC1" firstAttribute="trailing" secondItem="Ial-l8-Ek4" secondAttribute="trailingMargin" id="Qzf-FC-f5I"/>
                             <constraint firstItem="Ghd-IX-lkO" firstAttribute="leading" secondItem="htv-19-Sbi" secondAttribute="leading" id="cvS-nV-Rnw"/>
+                            <constraint firstItem="htv-19-Sbi" firstAttribute="bottom" secondItem="2gH-hC-EeA" secondAttribute="bottom" constant="14" id="gWT-8e-13K"/>
                             <constraint firstAttribute="bottom" secondItem="Ghd-IX-lkO" secondAttribute="bottom" id="ghl-Lq-MjE"/>
                             <constraint firstItem="Ghd-IX-lkO" firstAttribute="top" secondItem="Ial-l8-Ek4" secondAttribute="top" id="nLY-ll-zkG"/>
                             <constraint firstItem="htv-19-Sbi" firstAttribute="trailing" secondItem="Ghd-IX-lkO" secondAttribute="trailing" id="vbH-Dk-3az"/>
@@ -107,6 +121,7 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="Ghd-IX-lkO" id="7rD-gZ-zT6"/>
+                        <outlet property="segmentedControl" destination="2gH-hC-EeA" id="3Sl-sO-ud3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kCR-Rp-M6q" userLabel="First Responder" sceneMemberID="firstResponder"/>
