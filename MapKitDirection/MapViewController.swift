@@ -12,13 +12,9 @@ import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate {
 
     let locationManager = CLLocationManager()
+    var currentPlacemark: CLPlacemark?
+    
     @IBOutlet var mapView: MKMapView!
-    @IBAction func showDirection(sender: UIButton) {
-        
-    }
-    
-    
-    
     
     var restaurant:Restaurant!
 
@@ -44,6 +40,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             if let placemarks = placemarks {
                 // Get the first placemark
                 let placemark = placemarks[0]
+                
+                //Setting value of the current placemark
+                self.currentPlacemark = placemark
                 
                 // Add annotation
                 let annotation = MKPointAnnotation()
@@ -73,6 +72,47 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    @IBAction func showDirection(sender: UIButton){
+        guard let currentPlacemark = currentPlacemark else {
+            return
+        }
+        
+        let directionRequest = MKDirectionsRequest()
+        
+        //Setting the source of and destination of the route
+        directionRequest.source = MKMapItem.forCurrentLocation()
+        let destinationPlacemark = MKPlacemark(placemark: currentPlacemark)
+        directionRequest.destination = MKMapItem(placemark: destinationPlacemark)
+        directionRequest.transportType = MKDirectionsTransportType.automobile
+        
+        //Calculating the direction
+        let directions = MKDirections(request: directionRequest)
+        
+        directions.calculate { (routeResponse, routeError) in
+            guard let routeResponse = routeResponse else {
+                if let routeError = routeError {
+                    print("Error \(routeError)")
+                }
+            return
+            }
+            let route = routeResponse.routes[0]
+            self.mapView.add(route.polyline, level: MKOverlayLevel.aboveRoads)
+        }
+    }
+
+    //MARK: Visual for MKPolyline Route
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = UIColor.blue
+        renderer.lineWidth = 3.0
+        
+        return renderer
+    }
+    
+    
+    
     
     // MARK: - MKMapViewDelegate methods
     

@@ -88,8 +88,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="showDirection:" destination="vIg-fp-xRT" eventType="touchUpInside" id="7Ra-Z7-yZ9"/>
-                                    <action selector="showDirectionWithSender:" destination="vIg-fp-xRT" eventType="touchUpInside" id="FhQ-q9-g61"/>
+                                    <action selector="showDirectionWithSender:" destination="vIg-fp-xRT" eventType="touchUpInside" id="PHD-QX-RfL"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -108,7 +107,6 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="Ghd-IX-lkO" id="7rD-gZ-zT6"/>
-                        <outlet property="showDirection" destination="jEj-5k-AC1" id="Whz-cO-fVP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kCR-Rp-M6q" userLabel="First Responder" sceneMemberID="firstResponder"/>
