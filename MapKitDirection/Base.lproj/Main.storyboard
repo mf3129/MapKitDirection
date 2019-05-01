@@ -53,49 +53,73 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ghd-IX-lkO">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
-                            <button opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tpj-yl-bg6">
-                                <rect key="frame" x="324" y="20" width="35" height="35"/>
-                                <color key="backgroundColor" red="0.1137254902" green="0.1215686275" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="35" id="UsS-UX-QVh"/>
-                                    <constraint firstAttribute="height" constant="35" id="y2X-pl-hkP"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="cross">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <real key="value" value="17.5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="rJw-Wl-AeH" kind="unwind" unwindAction="unwindToHomeScreenWithSegue:" id="NVU-Q1-xJY"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jEj-5k-AC1">
-                                <rect key="frame" x="325" y="63" width="34" height="34"/>
-                                <color key="backgroundColor" red="0.1137254902" green="0.1215686275" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="34" id="VDS-Tw-0Hf"/>
-                                    <constraint firstAttribute="height" constant="34" id="dqR-A9-45T"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="compass"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="17"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="showDirectionWithSender:" destination="vIg-fp-xRT" eventType="touchUpInside" id="PHD-QX-RfL"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7z6-RP-ili">
+                                <rect key="frame" x="324" y="28" width="35" height="121"/>
+                                <subviews>
+                                    <button opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tpj-yl-bg6">
+                                        <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                        <color key="backgroundColor" red="0.1137254902" green="0.1215686275" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="N8Y-iO-2F4"/>
+                                            <constraint firstAttribute="width" constant="35" id="j6Y-je-zhB"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="cross">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <real key="value" value="17.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="rJw-Wl-AeH" kind="unwind" unwindAction="unwindToHomeScreenWithSegue:" id="NVU-Q1-xJY"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jEj-5k-AC1">
+                                        <rect key="frame" x="0.0" y="43" width="35" height="35"/>
+                                        <color key="backgroundColor" red="0.1137254902" green="0.1215686275" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="WwF-F1-eBh"/>
+                                            <constraint firstAttribute="width" constant="35" id="YwX-cU-QDf"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="compass"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="17"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="showDirectionWithSender:" destination="vIg-fp-xRT" eventType="touchUpInside" id="PHD-QX-RfL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLa-2Y-ss3">
+                                        <rect key="frame" x="0.0" y="86" width="35" height="35"/>
+                                        <color key="backgroundColor" red="0.1137254902" green="0.1215686275" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="gvb-aR-Lmj"/>
+                                            <constraint firstAttribute="width" constant="35" id="q67-nr-TWJ"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="gingerbread"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="17"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="showDirectionWithSender:" destination="vIg-fp-xRT" eventType="touchUpInside" id="rmb-aP-CL8"/>
+                                            <action selector="showNearby:" destination="vIg-fp-xRT" eventType="touchUpInside" id="Jwr-h6-gl7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2gH-hC-EeA">
                                 <rect key="frame" x="236" y="619" width="119" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="iab-Fe-ETi"/>
-                                    <constraint firstAttribute="width" constant="119" id="keN-Wq-Yvs"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="119" id="keN-Wq-Yvs"/>
                                 </constraints>
                                 <segments>
                                     <segment title="Car"/>
@@ -107,15 +131,13 @@
                         <constraints>
                             <constraint firstItem="htv-19-Sbi" firstAttribute="trailing" secondItem="2gH-hC-EeA" secondAttribute="trailing" constant="20" id="38m-bc-lFP"/>
                             <constraint firstItem="2gH-hC-EeA" firstAttribute="leading" secondItem="htv-19-Sbi" secondAttribute="leading" constant="236" id="4KD-OE-Lfk"/>
-                            <constraint firstItem="Tpj-yl-bg6" firstAttribute="top" secondItem="htv-19-Sbi" secondAttribute="top" id="7Jv-pw-zJL"/>
-                            <constraint firstItem="jEj-5k-AC1" firstAttribute="trailing" secondItem="Ial-l8-Ek4" secondAttribute="trailingMargin" id="Qzf-FC-f5I"/>
+                            <constraint firstItem="7z6-RP-ili" firstAttribute="top" secondItem="htv-19-Sbi" secondAttribute="top" constant="8" id="Jif-GW-nv2"/>
                             <constraint firstItem="Ghd-IX-lkO" firstAttribute="leading" secondItem="htv-19-Sbi" secondAttribute="leading" id="cvS-nV-Rnw"/>
                             <constraint firstItem="htv-19-Sbi" firstAttribute="bottom" secondItem="2gH-hC-EeA" secondAttribute="bottom" constant="14" id="gWT-8e-13K"/>
                             <constraint firstAttribute="bottom" secondItem="Ghd-IX-lkO" secondAttribute="bottom" id="ghl-Lq-MjE"/>
                             <constraint firstItem="Ghd-IX-lkO" firstAttribute="top" secondItem="Ial-l8-Ek4" secondAttribute="top" id="nLY-ll-zkG"/>
+                            <constraint firstItem="htv-19-Sbi" firstAttribute="trailing" secondItem="7z6-RP-ili" secondAttribute="trailing" constant="16" id="psr-dI-nYb"/>
                             <constraint firstItem="htv-19-Sbi" firstAttribute="trailing" secondItem="Ghd-IX-lkO" secondAttribute="trailing" id="vbH-Dk-3az"/>
-                            <constraint firstItem="Tpj-yl-bg6" firstAttribute="trailing" secondItem="Ial-l8-Ek4" secondAttribute="trailingMargin" id="vhr-7S-beu"/>
-                            <constraint firstItem="jEj-5k-AC1" firstAttribute="top" secondItem="Tpj-yl-bg6" secondAttribute="bottom" constant="8" id="xwJ-x3-wqG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="htv-19-Sbi"/>
                     </view>
@@ -205,5 +227,6 @@
     <resources>
         <image name="compass" width="22" height="22"/>
         <image name="cross" width="16" height="16"/>
+        <image name="gingerbread" width="22" height="25"/>
     </resources>
 </document>
