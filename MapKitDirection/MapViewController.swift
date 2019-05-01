@@ -14,6 +14,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     let locationManager = CLLocationManager()
     var currentPlacemark: CLPlacemark?
     var currentTransportType = MKDirectionsTransportType.automobile
+    var currentRoute: MKRoute?
     
     
     
@@ -117,30 +118,33 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 if let routeError = routeError {
                     print("Error \(routeError)")
                 }
-                
                 return
-                
-            }
+             }
             
             let route = routeResponse.routes[0]
+            self.currentRoute = route
             self.mapView.removeOverlays(self.mapView.overlays)
             self.mapView.add(route.polyline, level: MKOverlayLevel.aboveRoads)
             
             //Scaling the map automatically to route
             let rect = route.polyline.boundingMapRect
             self.mapView.setRegion(MKCoordinateRegionForMapRect(rect), animated: true)
-            
+        
         }
         
     }
 
+    
+    
     //MARK: Visual for MKPolyline Route
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        
         let renderer = MKPolylineRenderer(overlay: overlay)
         renderer.strokeColor = (currentTransportType == .automobile) ? UIColor.blue : UIColor.green
         renderer.lineWidth = 3.0
         
         return renderer
+        
     }
     
     
@@ -187,8 +191,26 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let leftIconView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: 53, height: 53))
         leftIconView.image = UIImage(named: restaurant.image)
         annotationView?.leftCalloutAccessoryView = leftIconView
-            
+        
+        //Adds a right detail disclosure button to right side of annotation
+        annotationView?.rightCalloutAccessoryView = UIButton(type: UIButtonType.detailDisclosure)
+        
         return annotationView
+    }
+    
+    //Segways to Route TableVC
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        performSegue(withIdentifier: "showSteps", sender: view)
+    }
+    
+    //Passing data to Route Table VC
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showSteps" {
+            let routeTableVC = segue.destination.childViewControllers[0] as! RouteTableViewController
+            if let steps = currentRoute?.steps {
+                routeTableVC.routeSteps = steps
+            }
+        }
     }
     
 }
